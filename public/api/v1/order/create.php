@@ -1,45 +1,56 @@
 <?php
 require '../../../database.php';
 
-if (!empty($_POST)) {
-// keep track validation errors
+$EPS = 0.0001;
+
+function validate_title($title) {
     $titleError = null;
-    $textError = null;
-    $costError = null;
-
-    $result =null;
-
-// keep track post values
-    $title = $_POST['title'];
-    $text = $_POST['text'];
-    $cost = $_POST['cost'];
-
-// validate input
-    $valid = true;
-
     if (empty($title)) {
         $titleError = 'Please enter Name';
-        $valid = false;
     } else if (strlen($title) > 50) {
         $titleError = 'Title should be less then 50';
-        $valid = false;
     }
+    return $titleError;
+}
 
+function validate_description($description) {
+    $descriptionError = null;
     if (empty($text)) {
-        $textError = 'Please enter description';
-        $valid = false;
-    } else if (strlen($title) > 2000) {
-        $textError = 'Description too big';
-        $valid = false;
+        $descriptionError = 'Please enter description';
+    } else if (strlen($description) > 2000) {
+        $descriptionError = 'Description too big';
     }
+    return $descriptionError;
+}
 
-    if (empty($cost)) {
-        $mobileError = 'Please enter price';
-        $valid = false;
-    } else if (is_float($cost)) {
-        $mobileError = 'Price should be a number';
-        $valid = false;
+function validate_price($price) {
+    global $EPS;
+    $priceError = null;
+    if (empty($price)) {
+        $priceError = 'Please enter price';
+    } else if (is_float($price)) {
+        $price = (float)$price;
+        if ($price - $EPS < 0) {
+            $priceError = 'Price should be positive';
+        }
     }
+    return $priceError;
+}
+
+header('Content-type: application/json');
+
+if (!empty($_POST)) {
+// keep track post values
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+
+// keep track validation errors
+    $titleError = validate_title($title);
+    $descriptionError = validate_description($description);
+    $priceError = validate_price($price);
+ // validate input
+    $valid = strlen($titleError.$descriptionError.$priceError) > 0;
 
 // insert data
     if ($valid) {
@@ -47,12 +58,17 @@ if (!empty($_POST)) {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "INSERT INTO orders (title,text,cost) values(?, ?, ?)";
         $q = $pdo->prepare($sql);
-        $q->execute(array($title, $text, $cost));
-        header("Location: index.php");
-    }
+        $q->execute(array($title, $description, $price));
 
-    header('Content-type: application/json');
-    echo json_encode($value);
+        echo json_encode(array('result' => 'ok'));
+    } else {
+        echo json_encode(array(
+                'result' => 'error',
+                'titleError' => $titleError,
+                'descriptionError' => $descriptionError,
+                'priceError' => $priceError)
+        );
+    }
 }
 ?>
 
