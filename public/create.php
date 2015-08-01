@@ -2,58 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link href="content/css/bootstrap.min.css" rel="stylesheet">
-    <script src="content/js/bootstrap.min.js"></script>
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="content/css/materialize.min.css"  media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>
-<div class="container">
 
-    <div class="span10 offset1">
-        <div class="row">
-            <h3>Create a Customer</h3>
-        </div>
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
 
-        <form class="form-horizontal" action="create.php" method="post">
-            <div class="control-group <?php echo !empty($titleError) ? 'error' : ''; ?>">
-                <label class="control-label">title</label>
-
-                <div class="controls">
-                    <input name="title" type="text" placeholder="Title" value="<?php echo !empty($title) ? $title : ''; ?>">
-                    <?php if (!empty($titleError)): ?>
-                        <span class="help-inline"><?php echo $titleError; ?></span>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="control-group <?php echo !empty($textError) ? 'error' : ''; ?>">
-                <label class="control-label">Description</label>
-                <div class="controls">
-                    <textarea name="text" placeholder="Description">
-                        <?php echo !empty($text) ? $text : ''; ?>
-                    </textarea>
-                    <?php if (!empty($textError)): ?>
-                        <span class="help-inline"><?php echo $textError; ?></span>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="control-group <?php echo !empty($costError) ? 'error' : ''; ?>">
-                <label class="control-label">Price</label>
-
-                <div class="controls">
-                    <input name="cost" type="text" placeholder="Price"
-                           value="<?php echo !empty($cost) ? $cost : ''; ?>">
-                    <?php if (!empty($costError)): ?>
-                        <span class="help-inline"><?php echo $costError; ?></span>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-success">Create</button>
-                <a class="btn" href="index.php">Back</a>
-            </div>
-        </form>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
+</nav>
+
+<div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+        <div class="container">
+            <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+            </div>
+        </div>
+    </div>
+    <div class="parallax"><img src="content/img/parallax-background-quasar.jpg" alt="Unsplashed background img 1"></div>
 </div>
-<!-- /container -->
+
+   <!--b-header-->
+    <div class="container">
+        <div class="card-panel">
+            <div class="row">
+                <form class="col s8 offset-s3" id="order_form">
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input name="title" type="text" class="validate" length="50">
+                            <label for="title" data-error="wrong" data-success="right">Title</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input name="price" type="text" class="validate" length="20">
+                            <label for="price" data-error="wrong" data-success="right">Price</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <textarea name="description" class="materialize-textarea" length="2000"></textarea>
+                            <label for="description" data-error="wrong">Description</>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light submit">Submit
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                        <a class="waves-effect waves-teal btn-flat clear">Clear</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!--b-layout-->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="content/js/plugins/materialize.min.js"></script>
+<script src="content/js/utils.js"></script>
+<script src="content/js/create_order.js"></script>
 </body>
 </html>

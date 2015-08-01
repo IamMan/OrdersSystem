@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link   href="content/css/bootstrap.min.css" rel="stylesheet">
-    <script src="content/js/bootstrap.min.js"></script>
+    <script src="content/js/plugins/bootstrap.min.js"></script>
 </head>
 
 <body>
