@@ -1,7 +1,0 @@
-create table orders (
- id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
- title VARCHAR(150) NOT NULL,
- text VARCHAR(2000) NOT NULL,
- cost NUMERIC(15,2) NOT NULL
-);
-

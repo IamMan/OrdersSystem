@@ -1,5 +1,10 @@
 var orderCreatorModule;
 
+$(document).ready(function(){
+
+    $('.parallax').parallax();
+});
+
 function OrderCreator() {
     var self = this;
     
@@ -10,7 +15,7 @@ function OrderCreator() {
 
         createApiMethod: "POST",
         createApiDataType: "json",
-        createApiUri: "/public/api/v1/order/create.php"
+        createApiUri: "api/v1/order/create.php"
     };
 
     this.init();
@@ -19,6 +24,8 @@ function OrderCreator() {
         self.sendOrder();
         event.preventDefault();
     });
+
+
 }
 
 OrderCreator.prototype = {

@@ -1,0 +1,46 @@
+{
+  "orders": {
+    "master": {
+      "master_0": {
+        "host": "rsch-ubuntu",
+        "port": "3306",
+        "user": "mm",
+        "password": "superman",
+        "db": "db_orders"
+      }
+    },
+    "slave": {
+      "slave_0": {
+        "host": "rsch-ubuntu",
+        "port": "3306",
+        "user": "mm",
+        "password": "superman",
+        "db": "db_orders"
+      }
+    },
+    "lazy_connections": 1,
+    "server_charset" : "utf8"
+  },
+  "accounts": {
+    "master": {
+      "master_0": {
+        "host": "rsch-ubuntu",
+        "port": "3306",
+        "user": "mm",
+        "password": "superman",
+        "db": "db_orders"
+      }
+    },
+    "slave": {
+      "slave_0": {
+        "host": "rsch-ubuntu",
+        "port": "3306",
+        "user": "mm",
+        "password": "superman",
+        "db": "db_orders"
+      }
+    },
+    "lazy_connections": 1,
+    "server_charset" : "utf8"
+  }
+}

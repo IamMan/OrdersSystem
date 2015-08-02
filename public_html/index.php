@@ -7,6 +7,8 @@
 </head>
 
 <body>
+
+<?php phpinfo();?>
 <div class="container">
     <div class="row">
         <h3>PHP CRUD Grid</h3>
@@ -26,7 +28,7 @@
             </thead>
             <tbody>
             <?php
-            include 'database.php';
+            include 'mydb.php';
             $pdo = connect();
             $sql = 'SELECT * FROM orders ORDER BY id DESC';
             foreach ($pdo->query($sql) as $row) {
