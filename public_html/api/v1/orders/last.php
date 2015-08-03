@@ -7,5 +7,5 @@
  */
 
 include("{$_SERVER['DOCUMENT_ROOT']}/application/api/api.php");
-$result = get_orders_list_from_get();
+$result = get_last_order_id();
 echo json_encode($result);

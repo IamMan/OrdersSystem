@@ -5,21 +5,32 @@ function UtilsModule() {
 }
 
 UtilsModule.prototype = {
-    getApiUrl: function(apiUrl) {
-        if (apiUrl[0] == '/') {
-            return this.host +  apiUrl;
-        } else {
-            return this.host + '/' + apiUrl;
+    getApiUrl: function(apiUrl, queryString) {
+        if (queryString) {
+            return  apiUrl + '?' + queryString;
         }
+        return apiUrl;
     },
 
-    createAjaxRequest : function() {
+    createAjaxRequest : function(self, url, query, data, ok_callback, fail_callback) {
+        queryString = $.param(query);
+        url = this.getApiUrl(url, queryString);
         var request = $.ajax({
-            method:    this.opt.createApiMethod,
-            url:       this.opt.createApiUri,
-            dataType:  this.opt.createApiDataType,
-            data:      formData
+            method:    'GET',
+            url:       url,
+            dataType:  'json',
+            data:      data
         });
+
+        request.success(function(response) {
+                ok_callback(self, response);
+            }
+        );
+
+        request.fail(function(response) {
+            fail_callback(self, response);
+        });
+
     }
 }
 

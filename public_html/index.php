@@ -26,16 +26,16 @@ if(!isset($_SESSION[ACCOUNT_SESSION_NAME]))      // if there is no valid session
     <div class="container">
         <div class="updates">
             Latest Update at <span class="synctime"></span>:
-            &nbsp;&nbsp;
-            <a href="https://github.com/Dogfalo/materialize/commit/717bd17545e7d89b03dcf2f376f0f417621f971e" class="sha">717bd17545e7d89b03dcf2f376f0f417621f971e</a>
-            &nbsp;&nbsp;
             <span class="date">4 days ago</span>
-            <a id="github-button" href="https://github.com/Dogfalo/materialize" class="btn-flat right grey-text text-lighten-5 waves-effect waves-light hide-on-small-only">Github</a>
+            <a id="load-new-button" class="btn-flat right grey-text text-lighten-2 waves-effect waves-light hide-on-small-only">Load New</a>
         </div>
     </div>
 </header>
 
 <main>
+    <ul class="collection orders">
+
+    </ul>
 </main>
 
 <footer class="page-footer teal lighten-2">

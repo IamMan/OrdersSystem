@@ -1,7 +1,6 @@
 var orderCreatorModule;
 
 $(document).ready(function(){
-
     $('.parallax').parallax();
 });
 

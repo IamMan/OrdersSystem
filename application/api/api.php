@@ -26,7 +26,7 @@ function is_success($result) {
 
 function create_order_from_post() {
     include('order/process_order.php');
-    return create_order_from_post();
+    return create_order_method_post();
 }
 
 function resolve_order_from_get() {
@@ -34,7 +34,13 @@ function resolve_order_from_get() {
     return resolve_order_method_get();
 }
 
-function get_orders_list() {
+function get_orders_list_from_get() {
     include('orders/process_orders.php');
-    return process_orders_from_get();
+    return get_orders_list_method_get();
+}
+
+function get_last_order_id()
+{
+    include('orders/process_orders.php');
+    return process_last_order_id_from_get();
 }
