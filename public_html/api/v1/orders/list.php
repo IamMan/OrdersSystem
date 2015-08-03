@@ -7,5 +7,5 @@
  */
 
 include("{$_SERVER['DOCUMENT_ROOT']}/application/api/api.php");
-$result = process_orders();
+$result = get_orders_list();
 echo json_encode($result);

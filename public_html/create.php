@@ -1,7 +1,15 @@
+<?php
+include('layout.php');
+session_start();
+session_regenerate_id();
+if(!isset($_SESSION[ACCOUNT_SESSION_NAME]))      // if there is no valid session
+{
+    header("Location: login.php");
+}
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="content/css/materialize.min.css" media="screen,projection"/>
     <!--Let browser know website is optimized for mobile-->
@@ -43,28 +51,31 @@
     <div class="section">
         <div class="row">
             <form class="col s8 offset-s3" id="order_form">
+                <row>
                 <div class="row">
                     <div class="input-field col s4">
                         <input name="title" type="text" class="validate" length="50">
-                        <label for="title" data-error="wrong" data-success="right">Title</label>
+                        <label for="title" data-success="right">Title</label>
                     </div>
                     <div class="input-field col s4">
                         <input name="price" type="text" class="validate" length="20">
-                        <label for="price" data-error="wrong" data-success="right">Price</label>
+                        <label for="price" data-success="right">Price</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s8">
                         <textarea name="description" class="materialize-textarea" length="2000"></textarea>
-                        <label for="description" data-error="wrong">Description</label>
+                        <label for="description" >Description</label>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row s4">
+                    <div class="divider col s8"></div><br>
                     <button class="btn waves-effect waves-light submit">Submit
                         <i class="mdi-content-send right"></i>
                     </button>
                     <a class="waves-effect waves-teal btn-flat clear">Clear</a>
                 </div>
+                </row>
             </form>
         </div>
     </div>

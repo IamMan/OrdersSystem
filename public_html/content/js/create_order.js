@@ -8,7 +8,7 @@ $(document).ready(function(){
 function OrderCreator() {
     var self = this;
     
-    this.opt = {
+    self.opt = {
         formSelector: '#order_form',
         formSubmit: ".submit",
         formClear: ".clear",
@@ -18,7 +18,7 @@ function OrderCreator() {
         createApiUri: "api/v1/order/create.php"
     };
 
-    this.init();
+    self.init();
     self.form = $(self.opt.formSelector);
     self.form.submit(function(event) {
         self.sendOrder();

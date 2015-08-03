@@ -6,6 +6,8 @@
  * Time: 22:04
  */
 
+include("{$_SERVER['DOCUMENT_ROOT']}/application/db/mydb.php");
+
 define('CURSOR_KEY', 'cursor');
 define('CURSOR_NAN', 'Cursot not a number');
 define('SIZE_KEY', 'size');
@@ -58,7 +60,7 @@ define('SELECT_TOP_ORDERS',  "SELECT  * FROM (SELECT id FROM orders WHERE resolv
 define('SELECT_FROM_ORDERS', "SELECT  * FROM (SELECT id FROM orders WHERE resolver_id IS NULL ORDER BY id DESC LIMIT ?, ?) o JOIN orders r ON l.id = o.id ORDER BY l.id DESC ");
 function select_orders($from, $size) {
 
-    include("{$_SERVER['DOCUMENT_ROOT']}/application/db/mydb.php");
+
 
     try {
         $query = null;
@@ -74,7 +76,7 @@ function select_orders($from, $size) {
         $result = execute_query($connection, $query, $args);
 
         if(is_last_query_success($connection)) {
-            return success_result($result->fetchAll());
+            return success_result($result->fetchAll(PDO::FETCH_ASSOC));
         } else {
             return error_result('Db error');
         }

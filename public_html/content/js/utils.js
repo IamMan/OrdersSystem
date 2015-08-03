@@ -11,6 +11,15 @@ UtilsModule.prototype = {
         } else {
             return this.host + '/' + apiUrl;
         }
+    },
+
+    createAjaxRequest : function() {
+        var request = $.ajax({
+            method:    this.opt.createApiMethod,
+            url:       this.opt.createApiUri,
+            dataType:  this.opt.createApiDataType,
+            data:      formData
+        });
     }
 }
 

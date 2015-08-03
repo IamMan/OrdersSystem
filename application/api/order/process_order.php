@@ -1,7 +1,5 @@
 <?php
 
-include('validate_order.php');
-
 define('ORDER_OBJECT', 'order');
 
 define('ORDER_ID_FIELD_NAME', 'id');
@@ -28,8 +26,16 @@ define("ORDER_MAX_SIZE", ORDER_TITLE_MAX_LENGTH
     + 50);
 
 define('ORDER_PRICE_EPS', 0.001);
+define('RATE', 0.98);
 
-function create_order_from_post() {
+define('ERROR_MESSAGE', 'some error');
+define('BAD_ORDER', 'bad order');
+define('BAD_ACCOUNT', 'bad account');
+
+
+function create_order_method_post() {
+    include('validate_order.php');
+
     $validate_results = validate_post();
     if ($validate_results[RESULT_FIELD_NAME] == ERROR_RESULT) {
         return $validate_results;
@@ -59,7 +65,6 @@ define("INSERT_ORDER_SQL", "INSERT INTO orders (title, description, price, creat
 function insert_order($order_object)
 {
     include("{$_SERVER['DOCUMENT_ROOT']}/application/db/mydb.php");
-
     try {
         $pdo_connection = get_connect_to_orders();
         $args = array(
@@ -79,8 +84,12 @@ function insert_order($order_object)
     }
 }
 
-function resolve_order_from_get() {
-    $validate_results = validate_field_from_array($_GET, ORDER_ID_FIELD_NAME, ORDER_ID_VALIDATION_FUNCTION_NAME);
+function resolve_order_method_get() {
+    include('validate_order.php');
+    $validate_results = null;
+    if (!empty($_GET)){
+        $validate_results = validate_field_from_array($_GET, ORDER_ID_FIELD_NAME, ORDER_ID_VALIDATION_FUNCTION_NAME);
+    }
     if ($validate_results != null) {
         return error_result($validate_results);
     }
@@ -92,11 +101,13 @@ function resolve_order($order_id) {
     $resolver_id = null;
     if (is_success($resolver_result)) {
         $resolver_id = $resolver_result[INFO_FIELD_NAME];
+        return insert_resolve_order($order_id, $resolver_id);
+    } else {
+        return $resolver_result;
     }
-    return insert_resolve_order($order_id, $resolver_id);
 }
 
-define("SELECT_ORDER_ID_PRICE", "SELECT id, price, resolver_id, FROM orders WHERE id = ?");
+define("SELECT_ORDER_ID_PRICE", "SELECT id, price, resolver_id FROM orders WHERE id = ?");
 define("UPDATE_ACCOUNT_CASH", "UPDATE accounts SET cash = cash + ? WHERE id = ?");
 define("UPDATE_ORDER_ID_RESOLVER", "UPDATE orders SET resolver_id = ? WHERE id = ?");
 function insert_resolve_order($order_id, $resolver_id) {
@@ -104,22 +115,23 @@ function insert_resolve_order($order_id, $resolver_id) {
 
     try {
         $orders_connection = get_connect_to_orders();
-        $accouts_connection = get_connect_to_accounts();
+        $accounts_connection = get_connect_to_accounts();
 
-        $args = array($order_id);
+        $args = array($order_id + 0);
         $result = execute_query($orders_connection, SELECT_ORDER_ID_PRICE, $args);
-        if(is_last_query_success($orders_connection)) {
-            return success_result(null);
-        } else {
-            return error_result('error');
+        if(!is_last_query_success($orders_connection)) {
+                return error_result(BAD_ORDER);
         }
 
-        $order = $result-> fetchAll();
-        if (isset($order[RESOLVER_ID_FIELD_NAME])) {
-            return error_result('error');
+        $order = $result-> fetchAll(PDO::FETCH_ASSOC);
+        if (!isset($order) or count($order) != 1 or !isset($order[0]) or isset($order[0][RESOLVER_ID_FIELD_NAME])) {
+            return error_result(BAD_ORDER);
+        } else {
+            $order = $order[0];
         }
-        $price = $result[PRICE_FIELD_NAME];
-        $cash = (int)($price * $rate);
+
+        $price = $order[PRICE_FIELD_NAME];
+        $cash = round($price * RATE, PHP_ROUND_HALF_DOWN);
         $orders_connection->beginTransaction();
         $accounts_connection->beginTransaction();
 
@@ -127,32 +139,39 @@ function insert_resolve_order($order_id, $resolver_id) {
         execute_query($orders_connection, UPDATE_ORDER_ID_RESOLVER, $args);
         if (!is_last_query_success($orders_connection)) {
             $orders_connection->rollBack();
-            $accouts_connection->rollBack();
-            return error_result('error');
+            $accounts_connection->rollBack();
+            return error_result('BAD_ORDER_ID');
         }
 
         $args = array($cash, $resolver_id);
-        execute_query($orders_connection, UPDATE_ACCOUNT_CASH, $args);
-        if (!is_last_query_success($orders_connection)) {
+        $account_update_result = execute_query($accounts_connection, UPDATE_ACCOUNT_CASH, $args);
+        if (!is_last_query_success($orders_connection) or $account_update_result->rowCount() != 1) {
             $orders_connection->rollBack();
-            $accouts_connection->rollBack();
-            return error_result('error');
+            $accounts_connection->rollBack();
+            return error_result(BAD_ACCOUNT);
         }
 
         $orders_connection->commit();
         $accounts_connection->commit();
-
+        return success_result(null);
     } catch (Exception $e) {
-        return error_result('Db error');
+        return error_result('error');
     }
 }
 
 function get_creator_id() {
-    //TODO: CREATOR FROM Session
-    return success_result(10);
+    return get_account_id_form_session();
 }
 
 function get_resolver_id() {
-    //TODO: RESOLVER FROM Session
-    return success_result(10);
+    return get_account_id_form_session();
+}
+
+function get_account_id_form_session() {
+    session_start();
+    if(isset($_SESSION[ACCOUNT_SESSION_NAME]))
+    {
+        return success_result($_SESSION[ACCOUNT_SESSION_NAME]);
+    }
+    return error_result(BAD_ACCOUNT);
 }

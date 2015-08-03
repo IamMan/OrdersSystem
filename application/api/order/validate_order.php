@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 02.08.15
- * Time: 19:20
- */
 
 function validate_id($orderId) {
     $orderError  = null;
@@ -77,7 +71,7 @@ function validate_price($price)
 
 function validate_field_from_array($order_object, $field_name, $validate_function)
 {
-    if (isset($order_object, $field_name)) {
+    if (isset($order_object) and isset($order_object[$field_name])) {
         return $validate_function($order_object[$field_name]);
     } else {
         return "$field_name is not set";

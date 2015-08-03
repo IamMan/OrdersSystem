@@ -10,6 +10,8 @@ define('SUCCESS_RESULT', 'ok');
 ini_set( 'error_reporting', E_ALL );
 ini_set( 'display_errors', true );
 
+define('ACCOUNT_SESSION_NAME', 'at');
+
 function error_result($object) {
     return array(RESULT_FIELD_NAME => ERROR_RESULT, ERRORS_FIELD_NAME => $object);
 }
@@ -22,12 +24,17 @@ function is_success($result) {
     return $result[RESULT_FIELD_NAME] == SUCCESS_RESULT;
 }
 
-function process_order() {
+function create_order_from_post() {
     include('order/process_order.php');
     return create_order_from_post();
 }
 
-function process_orders() {
+function resolve_order_from_get() {
+    include('order/process_order.php');
+    return resolve_order_method_get();
+}
+
+function get_orders_list() {
     include('orders/process_orders.php');
     return process_orders_from_get();
 }
