@@ -44,3 +44,7 @@ function get_last_order_id()
     include('orders/process_orders.php');
     return process_last_order_id_from_get();
 }
+function get_orders_deleted_from_get() {
+    include('orders/process_orders.php');
+    return get_orders_deleted_method_get();
+}

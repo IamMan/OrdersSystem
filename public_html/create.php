@@ -21,17 +21,14 @@ if(!isset($_SESSION[ACCOUNT_SESSION_NAME]))      // if there is no valid session
 
 <body>
 <header>
-<nav class="white" role="navigation">
+<nav class="teal" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <a id="logo-container" href="#" class="brand-logo">Orders System</a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
+            <li><a href="/public_html/index.php"">Orders</a></li>
         </ul>
 
-        <ul id="nav-mobile" class="side-nav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a  href="/public_html/index.php" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">Orders</i></a>
     </div>
 </nav>
 <div id="index-banner" class="parallax-container">
@@ -42,24 +39,24 @@ if(!isset($_SESSION[ACCOUNT_SESSION_NAME]))      // if there is no valid session
 
         </div>
     </div>
-    <div class="parallax"><img src="/content/img/background1.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/public_html/content/img/background1.jpg" alt="Unsplashed background img 1"></div>
 </div>
 </header>
 <!--b-header-->
 <main>
 <div class="container">
-    <div class="section">
+    <div class="section createorder">
         <div class="row">
             <form class="col s8 offset-s3" id="order_form">
                 <row>
                 <div class="row">
                     <div class="input-field col s4">
                         <input name="title" type="text" class="validate" length="50">
-                        <label for="title" data-success="right">Title</label>
+                        <label for="title">Title</label>
                     </div>
                     <div class="input-field col s4">
                         <input name="price" type="text" class="validate" length="20">
-                        <label for="price" data-success="right">Price</label>
+                        <label for="price">Price</label>
                     </div>
                 </div>
                 <div class="row">
@@ -69,7 +66,7 @@ if(!isset($_SESSION[ACCOUNT_SESSION_NAME]))      // if there is no valid session
                     </div>
                 </div>
                 <div class="row s4">
-                    <div class="divider col s8"></div><br>
+<!--                    <div class="divider col s8"></div><br>-->
                     <button class="btn waves-effect waves-light submit">Submit
                         <i class="mdi-content-send right"></i>
                     </button>
@@ -77,6 +74,16 @@ if(!isset($_SESSION[ACCOUNT_SESSION_NAME]))      // if there is no valid session
                 </div>
                 </row>
             </form>
+        </div>
+    </div>
+    <div class="section created hide">
+        <div class="row">
+            <h2 class="header center teal-text text-lighten-2">Order Successfully Created</h2>
+            <br>
+            <div class="center">
+                <button class="btn waves-effect waves-light center addorder">New Order</button>
+                <a href="index.php"><button class="btn waves-effect waves-light center">Orders</button>
+            </div>
         </div>
     </div>
 </div>

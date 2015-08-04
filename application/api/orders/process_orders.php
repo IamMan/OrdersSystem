@@ -19,8 +19,25 @@ define('MAX_SIZE', '1000');
 define('DEFAULT_SIZE', '100');
 
 function validate_from() {
+    $from = null;
+    if(isset($_GET[FROM_KEY])) {
+        $from = $_GET[FROM_KEY] + 0;
+        if (!is_int($from)) {
+            return error_result(CURSOR_NAN);
+        }
+    }
+    return success_result($from);
+}
 
-
+function validate_to() {
+    $to = null;
+    if(isset($_GET[TO_KEY])) {
+        $to = $_GET[TO_KEY] + 0;
+        if (!is_int($to)) {
+            return error_result(CURSOR_NAN);
+        }
+    }
+    return success_result($to);
 }
 
 function validate_get_list() {
@@ -28,22 +45,14 @@ function validate_get_list() {
     $to = null;
     $size = null;
 
-    if(isset($_GET[FROM_KEY])) {
-        $from = $_GET[FROM_KEY] + 0;
-        if (!is_int($from)) {
-            return error_result(CURSOR_NAN);
-        }
+    $validate_from_result = validate_from();
+    if (is_success($validate_from_result)) {
+        $from = $validate_from_result[INFO_FIELD_NAME];
     }
 
-    if(isset($_GET[TO_KEY])) {
-        $to = $_GET[TO_KEY] + 0;
-        if (!is_int($to)) {
-            return error_result(CURSOR_NAN);
-        }
-    }
-
-    if (isset($from) and isset($to)) {
-        return error_result(CONFLICT_ARGS);
+    $validate_to_result = validate_to();
+    if (is_success($validate_to_result)) {
+        $to = $validate_to_result[INFO_FIELD_NAME];
     }
 
     if(isset($_GET[SIZE_KEY])) {
@@ -58,19 +67,19 @@ function validate_get_list() {
         $size = DEFAULT_SIZE;
     }
 
-    if (isset($from)) {
-        return success_result(array(SIZE_KEY => $size, FROM_KEY => $from));
-    } else {
-        return success_result(array(SIZE_KEY => $size, TO_KEY => $to));
-    }
-
+    return success_result(array(SIZE_KEY => $size, FROM_KEY => $from, TO_KEY => $to));
 }
 
 function get_orders_list_method_get() {
     $validate_object = validate_get_list();
     if (is_success($validate_object)) {
         $orders_result = null;
-        if (array_key_exists(FROM_KEY, $validate_object[INFO_FIELD_NAME])) {
+
+        if (isset($validate_object[INFO_FIELD_NAME][TO_KEY]) and isset($validate_object[INFO_FIELD_NAME][FROM_KEY])) {
+            return error_result(CONFLICT_ARGS);
+        }
+
+        if (isset($validate_object[INFO_FIELD_NAME][FROM_KEY])) {
             $cursor = $validate_object[INFO_FIELD_NAME][FROM_KEY];
             $size = $validate_object[INFO_FIELD_NAME][SIZE_KEY];
             $orders_result = select_orders_from($cursor, $size);
@@ -147,4 +156,51 @@ function select_last_id() {
     } catch(Exception $ex) {
         return error_result(ERROR_MESSAGE);
     }
+}
+
+function get_orders_deleted_method_get() {
+    return error_result(DEPRECATED);
+
+    $validate_object = validate_get_list();
+    if (is_success($validate_object)) {
+        $orders_result = null;
+
+        if (!isset($validate_object[INFO_FIELD_NAME][TO_KEY])) {
+            return error_result(TO_KEY);
+        }
+
+        if (!isset($validate_object[INFO_FIELD_NAME][FROM_KEY])) {
+            return error_result(FROM_KEY);
+        }
+
+        $from = $validate_object[INFO_FIELD_NAME][FROM_KEY] + 0;
+        $to = $validate_object[INFO_FIELD_NAME][TO_KEY] + 0;
+        if ($to - $from <= 0 and $to - $from > MAX_SIZE) {
+            return error_result(SIZE);
+        }
+
+        $deleted_orders_result = select_deleted_orders_from_to($from, $to);
+
+        return $deleted_orders_result;
+    } else {
+        return $validate_object;
+    }
+}
+
+define('SELECT_DELETE_ORDERS_FROM_TO', "SELECT id FROM orders WHERE ? <= id and id <= ? AND resolver_id IS NOT NULL");
+function select_deleted_orders_from_to($from, $to) {
+    try {
+        $connection = get_connect_to_orders();
+        $args = array($from + 0, $to + 0);
+        $result = execute_query($connection, SELECT_DELETE_ORDERS_FROM_TO, $args);
+        if(is_last_query_success($connection)) {
+            return success_result($result->fetchAll(PDO::FETCH_NUM));
+        } else {
+            return error_result(ERROR_MESSAGE);
+        }
+
+    } catch(Exception $ex) {
+        return error_result(ERROR_MESSAGE);
+    }
+
 }

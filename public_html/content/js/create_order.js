@@ -25,11 +25,27 @@ function OrderCreator() {
     });
 
 
+
 }
 
 OrderCreator.prototype = {
     init: function(){
 
+    },
+
+    clearForm: function() {
+        var title = $('input[name=title]')
+        title.val("");
+        title.removeClass("valid");
+        title.removeClass("invalid");
+        var textarea = $('textarea[name=description]');
+        textarea.val("");
+        textarea.removeClass("valid");
+        textarea.removeClass("invalid");
+        var price = $('input[name=price]');
+        price.val("");
+        price.removeClass("valid");
+        price.removeClass("invalid");
     },
 
     createOrderObject: function() {
@@ -50,7 +66,8 @@ OrderCreator.prototype = {
     },
 
     responseSuccess: function(response) {
-
+        $(".createorder").addClass("hide");
+        $(".created").removeClass("hide");
     },
 
     responseFail: function(self, response) {
@@ -95,4 +112,14 @@ OrderCreator.prototype = {
 
 $(function(){
     orderCreatorModule = new OrderCreator();
+    $(".addorder").on("click", function() {
+        $(".createorder").removeClass("hide");
+        $(".created").addClass("hide");
+        orderCreatorModule.clearForm();
+    });
+
+    $(".clear").on("click", function() {
+        orderCreatorModule.clearForm();
+    });
+
 });
