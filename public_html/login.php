@@ -39,7 +39,7 @@ if (!empty($_POST)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="content/js/plugins/materialize.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="content/css/create_order.css">
+    <link rel="stylesheet" type="text/css" href="content/css/main.css">
 </head>
 <body>
 <main>

@@ -11,6 +11,11 @@ create table orders (
  resolver_id int NULL
 );
 
+create table transaction_log(
+ order_id int PRIMARY KEY NOT NULL,
+ resolver_id int NOT NULL
+);
+
 CREATE TABLE accounts(
  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
  login varchar(50) NOT NULL,
@@ -21,7 +26,3 @@ CREATE TABLE accounts(
 
 insert into accounts(login, password) VALUE ('admin', 'admin');
 
-SELECT * from accounts;
-SELECT * from orders;
-
-update accounts set cash = cash + 100 where id = 10

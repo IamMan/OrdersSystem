@@ -23,12 +23,12 @@ UtilsModule.prototype = {
         });
 
         request.success(function(response) {
-                ok_callback(self, response);
+                ok_callback(self, response, query);
             }
         );
 
         request.fail(function(response) {
-            fail_callback(self, response);
+            fail_callback(self, response, query);
         });
 
     }

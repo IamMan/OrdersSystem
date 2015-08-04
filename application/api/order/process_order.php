@@ -122,10 +122,10 @@ function insert_resolve_order($order_id, $resolver_id) {
         if(!is_last_query_success($orders_connection)) {
                 return error_result(BAD_ORDER);
         }
-
+        //TODO: rewrite on transaction log and two-phase commit
         $order = $result-> fetchAll(PDO::FETCH_ASSOC);
         if (!isset($order) or count($order) != 1 or !isset($order[0]) or isset($order[0][RESOLVER_ID_FIELD_NAME])) {
-            return error_result(BAD_ORDER);
+            return error_result(array(ERROR_RESULT => BAD_ORDER, ORDER_ID_FIELD_NAME => $order_id));
         } else {
             $order = $order[0];
         }
@@ -153,7 +153,7 @@ function insert_resolve_order($order_id, $resolver_id) {
 
         $orders_connection->commit();
         $accounts_connection->commit();
-        return success_result(null);
+        return success_result(array(ORDER_ID_FIELD_NAME => $order_id, PRICE_FIELD_NAME => $cash));
     } catch (Exception $e) {
         return error_result('error');
     }

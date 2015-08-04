@@ -2,7 +2,7 @@
   "orders": {
     "master": {
       "master_0": {
-        "host": "rsch-ubuntu",
+        "host": "localhost",
         "port": "3306",
         "user": "mm",
         "password": "superman",
@@ -11,7 +11,7 @@
     },
     "slave": {
       "slave_0": {
-        "host": "rsch-ubuntu",
+        "host": "localhost",
         "port": "3306",
         "user": "mm",
         "password": "superman",
@@ -24,7 +24,7 @@
   "accounts": {
     "master": {
       "master_0": {
-        "host": "rsch-ubuntu",
+        "host": "localhost",
         "port": "3306",
         "user": "mm",
         "password": "superman",
@@ -33,7 +33,29 @@
     },
     "slave": {
       "slave_0": {
-        "host": "rsch-ubuntu",
+        "host": "localhost",
+        "port": "3306",
+        "user": "mm",
+        "password": "superman",
+        "db": "db_orders"
+      }
+    },
+    "lazy_connections": 1,
+    "server_charset" : "utf8"
+  },
+  "transactions": {
+    "master": {
+      "master_0": {
+        "host": "localhost",
+        "port": "3306",
+        "user": "mm",
+        "password": "superman",
+        "db": "db_orders"
+      }
+    },
+    "slave": {
+      "slave_0": {
+        "host": "localhost",
         "port": "3306",
         "user": "mm",
         "password": "superman",

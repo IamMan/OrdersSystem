@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.parallax-container{
+    height : 150px;
+}
+
+h1{
+    text-shadow: 0 1px #009688;
+}
+
+.collection-item {
+    height: 57px;
+    line-height: 57px;
+}
+
+#index-banner {
+    color: #FFF;
+}
+
+.update-last  {
+    height: 64px;
+    padding: 14px 0;
+}
+
+#load-new-button  {
+    background: #b2dfdb;
+}

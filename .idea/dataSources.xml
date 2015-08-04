@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1515930291">
-    <data-source source="LOCAL" name="MySQL - db_orders@rsch-ubuntu" uuid="bee89ac3-79aa-46c6-8f2e-1c698c06deb4">
+  <component name="DataSourceManagerImpl" format="xml" hash="900452746">
+    <data-source source="LOCAL" name="MySQL - db_orders@localhost" uuid="bee89ac3-79aa-46c6-8f2e-1c698c06deb4">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://rsch-ubuntu:3306/db_orders</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/db_orders</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
