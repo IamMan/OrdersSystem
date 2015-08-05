@@ -14,7 +14,7 @@ function OrderCreator() {
 
         createApiMethod: "POST",
         createApiDataType: "json",
-        createApiUri: "api/v1/order/create.php"
+        createApiUri: "api/v1/order/create"
     };
 
     self.init();

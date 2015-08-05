@@ -4,10 +4,10 @@ function LifeTimeList() {
     var self = this;
 
     self.opt = {
-        getNewApiUrl: "/public_html/api/v1/orders/last.php",
-        getListApiUrl: "/public_html/api/v1/orders/list.php",
-        getDeletedListApiUrl: "/public_html/api/v1/orders/deleted.php",
-        resolveOrderApiUrl: "/public_html/api/v1/order/resolver.php",
+        getNewApiUrl: "/api/v1/orders/last.php",
+        getListApiUrl: "/api/v1/orders/list.php",
+        getDeletedListApiUrl: "/api/v1/orders/deleted.php",
+        resolveOrderApiUrl: "/api/v1/order/resolver.php",
 
         firstButchSize: 100
     };
