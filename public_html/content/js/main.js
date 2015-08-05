@@ -4,10 +4,10 @@ function LifeTimeList() {
     var self = this;
 
     self.opt = {
-        getNewApiUrl: "/api/v1/orders/last.php",
-        getListApiUrl: "/api/v1/orders/list.php",
-        getDeletedListApiUrl: "/api/v1/orders/deleted.php",
-        resolveOrderApiUrl: "/api/v1/order/resolver.php",
+        getNewApiUrl: "api/v1/orders/last.php",
+        getListApiUrl: "api/v1/orders/list.php",
+        getDeletedListApiUrl: "api/v1/orders/deleted.php",
+        resolveOrderApiUrl: "api/v1/order/resolver.php",
 
         firstButchSize: 100
     };
@@ -107,7 +107,8 @@ LifeTimeList.prototype = {
     },
 
     getLastFail: function () {
-        self.new_orders_span.text('Error');
+        var neworders = $("#neworders");
+        self.text('Error');
     },
 
     getNewOrdersList: function (query) {
