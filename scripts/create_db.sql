@@ -1,6 +1,5 @@
-CREATE DATABASE db_orders IF NOT EXISTS;
-GRANT ALL ON db_orders.* TO mm@'172.20.208.77' IDENTIFIED BY 'PASSWORD';
-GRANT ALL ON db_accounts.* TO mm@'172.20.208.77' IDENTIFIED BY 'PASSWORD';
+CREATE DATABASE db_orders;
+GRANT ALL ON db_orders.* TO mm@'localhost' IDENTIFIED BY 'superman';
 
 create table orders (
  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -19,10 +18,15 @@ create table transaction_log(
 CREATE TABLE accounts(
  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
  login varchar(50) NOT NULL,
- password varchar(50) NOT NULL,
+ password varchar(32) NOT NULL,
  cash NUMERIC(15,2) NOT NULL DEFAULT 0,
  CONSTRAINT IX_Login UNIQUE (login)
 );
 
-insert into accounts(login, password) VALUE ('admin', 'admin');
+insert into accounts(login, password) VALUE ('admin', md5('admin'));
+insert into accounts(login, password) VALUE ('ilya', md5('pass'));
+insert into accounts(login, password) VALUE ('egor', md5('passpass'));
+insert into accounts(login, password) VALUE ('test1', md5('pass'));
+insert into accounts(login, password) VALUE ('test2', md5('pass'));
+insert into accounts(login, password) VALUE ('test3', md5('pass'));
 

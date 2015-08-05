@@ -33,7 +33,7 @@ function execute_query($connection, $query, $args) {
         $q->execute();
         return $q;
     } catch(Exception $ex) {
-        //TODO: LOG IT!!!
+        error_log($ex->getMessage());
         throw $ex;
     }
 }
@@ -88,6 +88,7 @@ function two_phase_commit($xid, $logic, $logic_params) {
             return false;
         }
     } catch (Exception $ex) {
+        error_log($ex->getMessage());
         return false;
     }
 

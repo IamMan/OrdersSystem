@@ -2,13 +2,6 @@
 
 define('ORDER_OBJECT', 'order');
 
-define('ORDER_ID_FIELD_NAME', 'id');
-define('TITLE_FIELD_NAME', 'title');
-define('DESCRIPTION_FIELD_NAME', 'description');
-define('PRICE_FIELD_NAME', 'price');
-define('CREATOR_ID_FIELD_NAME', 'creator_id');
-define('RESOLVER_ID_FIELD_NAME', 'resolver_id');
-
 define('ORDER_ID_VALIDATION_FUNCTION_NAME', 'validate_id');
 define('TITLE_VALIDATION_FUNCTION_NAME', 'validate_title');
 define('DESCRIPTION_VALIDATION_FUNCTION_NAME', 'validate_description');
@@ -31,7 +24,7 @@ define('RATE', 0.98);
 define('ERROR_MESSAGE', 'some error');
 define('BAD_ORDER', 'bad order');
 define('BAD_ACCOUNT', 'bad account');
-
+define('ORDER_RESOLVED', 'order already resolved');
 
 function create_order_method_post() {
     include('validate_order.php');
@@ -51,7 +44,8 @@ function create_order($order_object) {
             $creator_id = $creator_id_result[INFO_FIELD_NAME];
             if ($creator_id != null) {
                 $order_object[CREATOR_ID_FIELD_NAME] = $creator_id;
-                return $insert_result_object = insert_order($order_object);
+                $insert_result_object = insert_order($order_object);
+                return $insert_result_object;
             }
         }else {
             return $creator_id_result;
@@ -97,11 +91,18 @@ function resolve_order_method_get() {
 }
 
 function resolve_order($order_id) {
+    if (cash_is_order_resolved($order_id)) {
+        return error_result(ORDER_RESOLVED);
+    }
     $resolver_result = get_resolver_id();
     $resolver_id = null;
     if (is_success($resolver_result)) {
         $resolver_id = $resolver_result[INFO_FIELD_NAME];
-        return insert_resolve_order($order_id, $resolver_id);
+        $insert_resolve_order_result = insert_resolve_order($order_id, $resolver_id);
+        if (is_success($insert_resolve_order_result)) {
+            cash_resolved_order($order_id);
+        }
+        return $insert_resolve_order_result;
     } else {
         return $resolver_result;
     }
@@ -121,7 +122,7 @@ function insert_resolve_order($order_id, $resolver_id) {
         $orders_connection = get_connect_to_orders();
         $is_order_not_resolve = check_order_dont_resolve_and_return_order($orders_connection, $order_id);
         if ($is_order_not_resolve  == false) {
-            return error_result(BAD_ORDER);
+            return error_result(ORDER_RESOLVED);
         }
 
         $transactions_connection = get_connect_to_transaction_log();

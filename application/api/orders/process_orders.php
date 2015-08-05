@@ -67,7 +67,7 @@ function validate_get_list() {
         $size = DEFAULT_SIZE;
     }
 
-    return success_result(array(SIZE_KEY => $size, FROM_KEY => $from, TO_KEY => $to));
+    return success_result(array(SIZE_KEY => $size + 0, FROM_KEY => $from, TO_KEY => $to));
 }
 
 function get_orders_list_method_get() {
@@ -83,6 +83,7 @@ function get_orders_list_method_get() {
             $cursor = $validate_object[INFO_FIELD_NAME][FROM_KEY];
             $size = $validate_object[INFO_FIELD_NAME][SIZE_KEY];
             $orders_result = select_orders_from($cursor, $size);
+            return $orders_result;
         } else {
             $cursor = null;
             if (isset($validate_object[INFO_FIELD_NAME][TO_KEY])) {
@@ -90,25 +91,59 @@ function get_orders_list_method_get() {
             }
             $size = $validate_object[INFO_FIELD_NAME][SIZE_KEY];
             $orders_result = select_orders_to($cursor, $size);
+            return $orders_result;
         }
-
         return $orders_result;
     } else {
         return $validate_object;
     }
 }
 
-define('SELECT_ORDERS_TO',   "SELECT  * FROM (SELECT id FROM orders WHERE id < ? AND resolver_id IS NULL ORDER BY id DESC LIMIT ?) o JOIN orders l ON l.id = o.id ORDER BY l.id DESC ");
-define('SELECT_TOP_ORDERS',   "SELECT  * FROM (SELECT id FROM orders WHERE resolver_id IS NULL ORDER BY id DESC LIMIT ?) o JOIN orders l ON l.id = o.id ORDER BY l.id DESC ");
-define('SELECT_ORDERS_FROM', "SELECT  * FROM (SELECT id FROM orders WHERE id > ? AND resolver_id IS NULL ORDER BY id DESC LIMIT ?) o JOIN orders r ON l.id = o.id ORDER BY l.id DESC ");
+define('SELECT_ORDERS_TO',    "SELECT o.id, title, description, price FROM (SELECT id FROM orders WHERE id <= ? AND resolver_id IS NULL ORDER BY id DESC LIMIT ?) o JOIN orders l ON l.id = o.id ORDER BY l.id DESC ");
+define('SELECT_TOP_ORDERS',   "SELECT o.id, title, description, price FROM (SELECT id FROM orders WHERE resolver_id IS NULL ORDER BY id DESC LIMIT ?) o JOIN orders l ON l.id = o.id ORDER BY l.id DESC ");
+define('SELECT_ORDERS_FROM',  "SELECT o.id, title, description, price FROM (SELECT id FROM orders WHERE id >= ? AND resolver_id IS NULL ORDER BY id ASC LIMIT ?) o JOIN orders r ON r.id = o.id ORDER BY r.id DESC ");
 function select_orders_from($from, $size) {
+    $cashed = cash_get_opened_from($from, $size);
+    if ($cashed != false) {
+        if (count($cashed) > 0) {
+            return json_cashed_result($cashed);
+        }
+    }
     return select_orders(SELECT_ORDERS_FROM, $from, $size);
+
 }
 
 function select_orders_to($to, $size) {
     if (isset($to)) {
+        $cashed = cash_get_opened_to($to-1, $size);
+
+        if ($cashed != false) {
+            if (count($cashed) > 0) {
+                return json_cashed_result($cashed);
+            }
+        }
+
         return select_orders(SELECT_ORDERS_TO, $to, $size);
     } else {
+
+        $max_id_res = select_last_id();
+        $max_id_cash = cash_max_id();
+        if ($max_id_cash != false) {
+            $max_id_cash = array_values($max_id_cash)[0];
+        } else {
+            $max_id_cash = -1;
+        }
+        if (is_success($max_id_res) and $max_id_res[INFO_FIELD_NAME] == $max_id_cash) {
+            $cashed = cash_get_opened_top($size);
+
+            if ($cashed != false) {
+
+                if (count($cashed) > 0) {
+                    return json_cashed_result($cashed);
+                }
+            }
+
+        }
         return select_orders(SELECT_TOP_ORDERS, null, $size);
     }
 
@@ -118,15 +153,17 @@ function select_orders($query, $cursor, $size) {
     try {
         $args = null;
         if (isset($cursor)) {
-            $args = array($cursor + 0, $size + 0);
+            $args = array($cursor, $size);
         } else {
-            $args = array($size + 0);
+            $args = array($size);
         }
         $connection = get_connect_to_orders();
         $result = execute_query($connection, $query, $args);
 
         if(is_last_query_success($connection)) {
-            return success_result($result->fetchAll(PDO::FETCH_ASSOC));
+            $orders =  $result->fetchAll(PDO::FETCH_ASSOC);
+            cash_update_opened($orders);
+            return success_result($orders);
         } else {
             return error_result('db error');
         }
@@ -141,7 +178,7 @@ function process_last_order_id_from_get() {
     return $select_last_result;
 }
 
-define('SELECT_MAX_ORDER_ID',  "SELECT MAX(id) FROM orders");
+define('SELECT_MAX_ORDER_ID',  "SELECT MAX(id) FROM orders WHERE resolver_id IS NULL");
 function select_last_id() {
     try {
         $query = SELECT_MAX_ORDER_ID;

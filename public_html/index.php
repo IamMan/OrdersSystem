@@ -42,8 +42,8 @@ if(!isset($_SESSION[ACCOUNT_SESSION_NAME]))      // if there is no valid session
                 <row>
                     <div class="col s5">
                     <div class="updates ">
-                        Latest Update at <span class="synctime"></span>:
-                        <span class="date">4 days ago</span>
+                        Latest Update at <span id="last_update"></span>
+                        <span id="neworders"></span>
                         <a id="load-new-button" class="btn-flat right teal-text-lighten-5 waves-effect waves-light hide-on-small-only">Load New</a>
                     </div>
                     </div>

@@ -4,7 +4,7 @@ function LifeTimeList() {
     var self = this;
 
     self.opt = {
-        getNewApiUrl: "/api/v1/orders/new",
+        getNewApiUrl: "/public_html/api/v1/orders/last.php",
         getListApiUrl: "/public_html/api/v1/orders/list.php",
         getDeletedListApiUrl: "/public_html/api/v1/orders/deleted.php",
         resolveOrderApiUrl: "/public_html/api/v1/order/resolver.php",
@@ -13,22 +13,25 @@ function LifeTimeList() {
     };
 
     self.orders = $(".collection.orders");
+    self.last_update_span = $("#last_update");
+    self.new_orders_span = $("#neworders");
+
     $("#load-new-button").click(function () {
-        self.getNewOrdersList({});
+        self.getNewOrdersList({from:orders_ids[orders_ids.length - 1]});
     });
 }
 
 function gen_button(order) {
     var button = '<a class="waves-effect waves-light btn secondary-content" >Resolve </a>';
 
-    $(document).on("click", ".o" + order.id + "> row > div > a", function (event) {
+    $(document).on("click", ".o" + order.id + "> row > div > a", function () {
         lifeTimeListModule.resolveOrder(order.id);
     });
 
     return button;
 }
 
-function order_to_li(self, order) {
+function order_to_li(order) {
     var order_li = "<div ";
     button = gen_button(order);
     order_li += 'class="collection-item o' + order.id + '">';
@@ -55,7 +58,7 @@ function remove_order_by_id_ok(order_id, price) {
         order_div.slideUp(700, function () {
             order_div.remove();
         });
-    }, 1500);
+    }, 2500);
 
 }
 
@@ -70,23 +73,41 @@ function remove_order_by_id_error(order_id, errors) {
         order_div.slideUp(700, function () {
             order_div.remove();
         });
-    }, 1500);
+    }, 2500);
 }
 
 var orders_ids = [];
 var is_first_time_load = true;
 LifeTimeList.prototype = {
 
-    getNew: function () {
+    getLast: function () {
+        var query = {};
+        utilsModule.createAjaxRequest(this, this.opt.getNewApiUrl, query, {}, this.getLastSuccess, this.getLastFail);
+    },
+
+    getLastSuccess: function (self, response) {
+        var neworders = $("#neworders");
+        if (response.result == 'ok')
+        {
+            //self.last_orders_span(response.info);
+            var newCount = response.info - orders_ids[orders_ids.length - 1] -1;
+            if (newCount > 100) {
+                neworders.text('100+ new orders ready for you');
+            } else if (newCount > 0){
+                neworders.text(newCount + ' new orders ready for you');
+            } else {
+                neworders.text('');
+            }
+
+        }
+         else {
+            neworders.text('Error');
+        }
 
     },
 
-    getNewSuccess: function () {
-
-    },
-
-    getNewFail: function () {
-
+    getLastFail: function () {
+        self.new_orders_span.text('Error');
     },
 
     getNewOrdersList: function (query) {
@@ -94,16 +115,22 @@ LifeTimeList.prototype = {
     },
 
     getListRequestSuccess: function (self, response) {
-        if (response.result == 'ok') {
-            $.each(response.info.reverse(), function (index, order) {
+        if (response.result == 'ok')
+        {
+            self.last_update_span =
+            response.info.sort(function (o1, o2){ return o1.id - o2.id});
+            $.each(response.info, function (index, order) {
                 if ($.inArray(order.id, orders_ids) == -1) {
                     var order_li = order_to_li(self, order);
                     self.orders.prepend(order_li);
                     orders_ids.push(order.id);
                 }
             });
-            if (is_first_time_load) {
 
+            var nowTime = new Date();
+            $("#last_update").text(nowTime);
+
+            if (is_first_time_load) {
                 is_first_time_load = false;
             }
         } else {
@@ -132,7 +159,7 @@ LifeTimeList.prototype = {
             remove_order_by_id_ok(response.info.id, response.info.price);
             orders_ids.slice(orders_ids.indexOf(response.info.id), 1);
         } else {
-            remove_order_by_id_error(query.id, response.errors.error);
+            remove_order_by_id_error(query.id, response.errors);
             orders_ids.slice(query.id.indexOf(query.id), 1);
         }
     },
@@ -146,6 +173,7 @@ LifeTimeList.prototype = {
 
     getOldListRequestSuccess: function (self, response) {
         if (response.result == 'ok') {
+            response.info.sort(function (o1, o2){ return parseInt(o2.id) - parseInt(o1.id)});
             $.each(response.info, function (index, order) {
                 if ($.inArray(order.id, orders_ids) == -1) {
                     var order_li = order_to_li(self, order);
@@ -184,7 +212,7 @@ LifeTimeList.prototype = {
 
     getDeletedListRequestFail: function (response) {
 
-    },
+    }
 
 };
 
@@ -203,20 +231,10 @@ $(document).ready(function () {
         }
     });
 
-    //(function(){
-    //    var first_div = $('.collection.orders > :visible:first');
-    //    if (first_div && first_div.length > 0) {
-    //        var classes = first_div[0].getAttribute('class').split(' ');
-    //        var to_id = classes[classes.length - 1].replace('o', '');
-    //    }
-    //
-    //    var last_div = $('.collection.orders > :visible:last');
-    //    if (last_div && last_div.length > 0) {
-    //        var classes = last_div[0].getAttribute('class').split(' ');
-    //        var from_id = classes[classes.length - 1].replace('o', '');
-    //    }
-    //
-    //    lifeTimeListModule.getDeletedOrdersList({from : from_id, to : to_id});
-    //    setTimeout(arguments.callee, 5000);
-    //})();
+    (function(){
+        lifeTimeListModule.getLast();
+        setTimeout(arguments.callee, 10000);
+    })();
+
+
 });

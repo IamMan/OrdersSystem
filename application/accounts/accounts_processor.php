@@ -36,7 +36,7 @@ function select_account($login, $password) {
     include("{$_SERVER['DOCUMENT_ROOT']}/application/db/mydb.php");
     try {
         $account_connection = get_connect_to_accounts();
-        $args = array($login, $password);
+        $args = array($login, md5($password));
         $select_result = execute_query($account_connection, SELECT_ACCOUNT, $args);
         if (is_last_query_success($account_connection)) {
             $id = $select_result->fetchAll();
