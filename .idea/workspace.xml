@@ -4,24 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/application/api/orders/process_orders.php" line="81" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1462c3d5-7033-44d9-8f99-06d15141f788" name="Default" comment="Second prototype">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/accounts/accounts_processor.php" afterPath="$PROJECT_DIR$/application/accounts/accounts_processor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/api.php" afterPath="$PROJECT_DIR$/application/api/api.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/cash.php" afterPath="$PROJECT_DIR$/application/api/cash.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/api/v1/order/create.php" afterPath="$PROJECT_DIR$/public_html/api/v1/order/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/create_db.sql" afterPath="$PROJECT_DIR$/scripts/create_db.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/api/v1/orders/deleted.php" afterPath="$PROJECT_DIR$/public_html/api/v1/orders/deleted.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/index.php" afterPath="$PROJECT_DIR$/public_html/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/api/v1/orders/last.php" afterPath="$PROJECT_DIR$/public_html/api/v1/orders/last.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/api/v1/orders/list.php" afterPath="$PROJECT_DIR$/public_html/api/v1/orders/list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/content/js/main.js" afterPath="$PROJECT_DIR$/public_html/content/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/db/mydb.php" afterPath="$PROJECT_DIR$/application/db/mydb.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/order/process_order.php" afterPath="$PROJECT_DIR$/application/api/order/process_order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/orders/process_orders.php" afterPath="$PROJECT_DIR$/application/api/orders/process_orders.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/cash/reddis.php" afterPath="$PROJECT_DIR$/application/cash/reddis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/api/v1/order/resolver.php" afterPath="$PROJECT_DIR$/public_html/api/v1/order/resolver.php" />
+    <list default="true" id="1462c3d5-7033-44d9-8f99-06d15141f788" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/configs/mysqlnd_ms_plugin.json" afterPath="$PROJECT_DIR$/application/configs/mysqlnd_ms_plugin.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="2e44acaa-79d8-4e33-8ad6-69c2c19b6753" name="Rejected commit: Default" comment="Second prototype" />
@@ -64,20 +48,20 @@
         <entry file="file://$PROJECT_DIR$/public_html/content/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
               <folding>
-                <element signature="e#2643#2792#0" expanded="false" />
-                <element signature="e#2841#3424#0" expanded="false" />
-                <element signature="e#3456#3507#0" expanded="false" />
-                <element signature="e#3549#3689#0" expanded="false" />
-                <element signature="e#3745#4432#0" expanded="false" />
-                <element signature="e#4479#4487#0" expanded="false" />
-                <element signature="e#4528#5048#0" expanded="false" />
-                <element signature="e#5109#5453#0" expanded="false" />
-                <element signature="e#5504#5511#0" expanded="false" />
-                <element signature="e#5553#5699#0" expanded="false" />
-                <element signature="e#5758#6241#0" expanded="false" />
-                <element signature="e#6291#6299#0" expanded="false" />
+                <element signature="e#2595#2744#0" expanded="false" />
+                <element signature="e#2793#3376#0" expanded="false" />
+                <element signature="e#3408#3459#0" expanded="false" />
+                <element signature="e#3501#3641#0" expanded="false" />
+                <element signature="e#3697#4384#0" expanded="false" />
+                <element signature="e#4431#4439#0" expanded="false" />
+                <element signature="e#4480#5000#0" expanded="false" />
+                <element signature="e#5061#5405#0" expanded="false" />
+                <element signature="e#5456#5463#0" expanded="false" />
+                <element signature="e#5505#5651#0" expanded="false" />
+                <element signature="e#5710#6193#0" expanded="false" />
+                <element signature="e#6243#6251#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -118,59 +102,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="process_order.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/api/order/process_order.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.3333335">
-              <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-              <folding>
-                <element signature="e#958#1057#0#PHP" expanded="false" />
-                <element signature="n#insert_resolve_order#0;n#!!top" expanded="false" />
-                <element signature="n#check_order_dont_resolve_and_return_order#0;n#!!top" expanded="false" />
-                <element signature="n#resolve_order_logic#0;n#!!top" expanded="false" />
-                <marker date="1438796530777" expanded="true" signature="1848:1925" placeholder="INSERT INTO ..." />
-                <marker date="1438796530777" expanded="true" signature="5930:5965" placeholder="SELECT 1 FRO..accounts..." />
-                <marker date="1438796530777" expanded="true" signature="6401:6455" placeholder="SELECT id, p..orders..." />
-                <marker date="1438796530777" expanded="true" signature="7201:7249" placeholder="UPDATE accou..." />
-                <marker date="1438796530777" expanded="true" signature="7293:7339" placeholder="UPDATE order..." />
-                <marker date="1438796530777" expanded="true" signature="7373:7438" placeholder="INSERT INTO ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/api/v1/orders/list.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3333335">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding>
-                <element signature="e#6#84#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_db.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/create_db.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.862069">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resolver.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/api/v1/order/resolver.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3333335">
-              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="reddis.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/cash/reddis.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -183,10 +114,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mydb.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mydb.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/db/mydb.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.26836583">
+            <state vertical-scroll-proportion="6.6296296">
               <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding>
                 <element signature="n#get_connect_to_orders#0;n#!!top" expanded="false" />
@@ -198,6 +129,46 @@
                 <element signature="n#is_last_query_success#0;n#!!top" expanded="false" />
                 <element signature="n#two_phase_commit#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysqlnd_ms_plugin.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/configs/mysqlnd_ms_plugin.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7128713">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="orderssystem.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/configs/orderssystem.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="71" column="33" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_order.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public_html/content/js/create_order.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_db.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/create_db.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -226,6 +197,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -249,7 +225,6 @@
         <option value="$PROJECT_DIR$/application/database.php" />
         <option value="$PROJECT_DIR$/application/db_configs.php" />
         <option value="$PROJECT_DIR$/public_html/content/js/materialize-create.js" />
-        <option value="$PROJECT_DIR$/application/configs/orderssystem.conf" />
         <option value="$PROJECT_DIR$/application/db/database.php" />
         <option value="$PROJECT_DIR$/application/api/order/order_utils.php" />
         <option value="$PROJECT_DIR$/public_html/api/v1/order/resolve.php" />
@@ -259,11 +234,9 @@
         <option value="$PROJECT_DIR$/application/Bootstrap.php" />
         <option value="$PROJECT_DIR$/public_html/layout.php" />
         <option value="$PROJECT_DIR$/public_html/api/v1/orders/new.php" />
-        <option value="$PROJECT_DIR$/application/configs/mysqlnd_ms_plugin.json" />
         <option value="$PROJECT_DIR$/public_html/content/css/create_order.css" />
         <option value="$PROJECT_DIR$/public_html/content/js/utils.js" />
         <option value="$PROJECT_DIR$/application/db/db_configs.php" />
-        <option value="$PROJECT_DIR$/public_html/content/js/create_order.js" />
         <option value="$PROJECT_DIR$/public_html/create.php" />
         <option value="$PROJECT_DIR$/public_html/content/css/main.css" />
         <option value="$PROJECT_DIR$/public_html/api/v1/order/create.php" />
@@ -277,10 +250,13 @@
         <option value="$PROJECT_DIR$/application/accounts/accounts_processor.php" />
         <option value="$PROJECT_DIR$/scripts/create_db.sql" />
         <option value="$PROJECT_DIR$/application/api/orders/process_orders.php" />
-        <option value="$PROJECT_DIR$/public_html/content/js/main.js" />
         <option value="$PROJECT_DIR$/application/api/cash.php" />
         <option value="$PROJECT_DIR$/application/cash/reddis.php" />
         <option value="$PROJECT_DIR$/application/db/mydb.php" />
+        <option value="$PROJECT_DIR$/application/configs/orderssystem.conf" />
+        <option value="$PROJECT_DIR$/public_html/content/js/create_order.js" />
+        <option value="$PROJECT_DIR$/public_html/content/js/main.js" />
+        <option value="$PROJECT_DIR$/application/configs/mysqlnd_ms_plugin.json" />
       </list>
     </option>
   </component>
@@ -438,54 +414,6 @@
               <option name="myItemId" value="v1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orders" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public_html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -515,69 +443,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cash" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orders" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OrdersSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="order" />
+              <option name="myItemId" value="configs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -733,7 +599,19 @@
       <option name="project" value="LOCAL" />
       <updated>1438711879663</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Second prototype">
+      <created>1438808968557</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1438808968557</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Release changes">
+      <created>1438813299185</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1438813299185</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -793,7 +671,8 @@
     <MESSAGE value="Pre First prototype (front-end updates + backend)" />
     <MESSAGE value="First prototype" />
     <MESSAGE value="Second prototype" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second prototype" />
+    <MESSAGE value="Release changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -885,6 +764,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1055,13 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/configs/orderssystem.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="60" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/layout.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1073,13 +946,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.0">
           <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/configs/mysqlnd_ms_plugin.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-44.0">
-          <caret line="66" column="3" selection-start-line="66" selection-start-column="3" selection-end-line="66" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1138,13 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/content/js/create_order.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-30.0">
@@ -1179,17 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/create_db.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.862069">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/api/v1/order/resolver.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.3333335">
@@ -1217,12 +1065,12 @@
             <element signature="n#insert_resolve_order#0;n#!!top" expanded="false" />
             <element signature="n#check_order_dont_resolve_and_return_order#0;n#!!top" expanded="false" />
             <element signature="n#resolve_order_logic#0;n#!!top" expanded="false" />
-            <marker date="1438796530777" expanded="true" signature="1848:1925" placeholder="INSERT INTO ..." />
-            <marker date="1438796530777" expanded="true" signature="5930:5965" placeholder="SELECT 1 FRO..accounts..." />
-            <marker date="1438796530777" expanded="true" signature="6401:6455" placeholder="SELECT id, p..orders..." />
-            <marker date="1438796530777" expanded="true" signature="7201:7249" placeholder="UPDATE accou..." />
-            <marker date="1438796530777" expanded="true" signature="7293:7339" placeholder="UPDATE order..." />
-            <marker date="1438796530777" expanded="true" signature="7373:7438" placeholder="INSERT INTO ..." />
+            <marker date="1438796530777" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438796530777" expanded="true" signature="-1:-1" placeholder="SELECT 1 FRO..accounts..." />
+            <marker date="1438796530777" expanded="true" signature="-1:-1" placeholder="SELECT id, p..orders..." />
+            <marker date="1438796530777" expanded="true" signature="-1:-1" placeholder="UPDATE accou..." />
+            <marker date="1438796530777" expanded="true" signature="-1:-1" placeholder="UPDATE order..." />
+            <marker date="1438796530777" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -1244,27 +1092,6 @@
             <marker date="1438808604309" expanded="true" signature="3282:3365" placeholder="SELECT id FR..orders..." />
             <marker date="1438808604309" expanded="true" signature="5486:5538" placeholder="SELECT MAX(i..orders..." />
             <marker date="1438808604309" expanded="true" signature="6882:6957" placeholder="SELECT id FR..orders..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/content/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
-          <folding>
-            <element signature="e#2643#2792#0" expanded="false" />
-            <element signature="e#2841#3424#0" expanded="false" />
-            <element signature="e#3456#3507#0" expanded="false" />
-            <element signature="e#3549#3689#0" expanded="false" />
-            <element signature="e#3745#4432#0" expanded="false" />
-            <element signature="e#4479#4487#0" expanded="false" />
-            <element signature="e#4528#5048#0" expanded="false" />
-            <element signature="e#5109#5453#0" expanded="false" />
-            <element signature="e#5504#5511#0" expanded="false" />
-            <element signature="e#5553#5699#0" expanded="false" />
-            <element signature="e#5758#6241#0" expanded="false" />
-            <element signature="e#6291#6299#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1301,7 +1128,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/db/mydb.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.26836583">
+        <state vertical-scroll-proportion="6.6296296">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
             <element signature="n#get_connect_to_orders#0;n#!!top" expanded="false" />
@@ -1313,6 +1140,62 @@
             <element signature="n#is_last_query_success#0;n#!!top" expanded="false" />
             <element signature="n#two_phase_commit#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/configs/orderssystem.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="33" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/content/js/create_order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/create_db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/content/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding>
+            <element signature="e#2595#2744#0" expanded="false" />
+            <element signature="e#2793#3376#0" expanded="false" />
+            <element signature="e#3408#3459#0" expanded="false" />
+            <element signature="e#3501#3641#0" expanded="false" />
+            <element signature="e#3697#4384#0" expanded="false" />
+            <element signature="e#4431#4439#0" expanded="false" />
+            <element signature="e#4480#5000#0" expanded="false" />
+            <element signature="e#5061#5405#0" expanded="false" />
+            <element signature="e#5456#5463#0" expanded="false" />
+            <element signature="e#5505#5651#0" expanded="false" />
+            <element signature="e#5710#6193#0" expanded="false" />
+            <element signature="e#6243#6251#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/configs/mysqlnd_ms_plugin.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7128713">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
