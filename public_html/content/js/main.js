@@ -122,7 +122,7 @@ LifeTimeList.prototype = {
             response.info.sort(function (o1, o2){ return o1.id - o2.id});
             $.each(response.info, function (index, order) {
                 if ($.inArray(order.id, orders_ids) == -1) {
-                    var order_li = order_to_li(self, order);
+                    var order_li = order_to_li(order);
                     self.orders.prepend(order_li);
                     orders_ids.push(order.id);
                 }
@@ -177,7 +177,7 @@ LifeTimeList.prototype = {
             response.info.sort(function (o1, o2){ return parseInt(o2.id) - parseInt(o1.id)});
             $.each(response.info, function (index, order) {
                 if ($.inArray(order.id, orders_ids) == -1) {
-                    var order_li = order_to_li(self, order);
+                    var order_li = order_to_li(order);
                     self.orders.append(order_li);
                     orders_ids.unshift(order.id);
                 }
