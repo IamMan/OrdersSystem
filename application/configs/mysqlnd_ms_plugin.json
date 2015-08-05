@@ -5,7 +5,7 @@
         "host": "localhost",
         "port": "3306",
         "user": "mm",
-        "password": "supermanpassword",
+        "password": "superman",
         "db": "db_orders"
       }
     },
@@ -14,7 +14,7 @@
         "host": "localhost",
         "port": "3306",
         "user": "mm",
-        "password": "supermanpassword",
+        "password": "superman",
         "db": "db_orders"
       }
     },
@@ -27,7 +27,7 @@
         "host": "localhost",
         "port": "3306",
         "user": "mm",
-        "password": "supermanpassword",
+        "password": "superman",
         "db": "db_orders"
       }
     },
@@ -36,7 +36,7 @@
         "host": "localhost",
         "port": "3306",
         "user": "mm",
-        "password": "supermanpassword",
+        "password": "superman",
         "db": "db_orders"
       }
     },
@@ -49,7 +49,7 @@
         "host": "localhost",
         "port": "3306",
         "user": "mm",
-        "password": "supermanpassword",
+        "password": "superman",
         "db": "db_orders"
       }
     },
@@ -58,7 +58,7 @@
         "host": "localhost",
         "port": "3306",
         "user": "mm",
-        "password": "supermanpassword",
+        "password": "superman",
         "db": "db_orders"
       }
     },
