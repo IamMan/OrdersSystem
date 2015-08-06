@@ -151,7 +151,7 @@ LifeTimeList.prototype = {
         order_div.append('<div class="preloader-wrapper active right"><div class="spinner-layer spinner-green-only"><div class="circle-clipper right"><div class="circle"></div></div></div></div>  ');
         window.setTimeout(function() {
             utilsModule.createAjaxRequest(self, self.opt.resolveOrderApiUrl, {id: order_id}, {}, self.resolveOrderSuccess, self.resolveOrderFail);
-        }, 700);
+        }, 500);
 
 
     },
