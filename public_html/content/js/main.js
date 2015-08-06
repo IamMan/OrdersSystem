@@ -58,7 +58,7 @@ function remove_order_by_id_ok(order_id, price) {
         order_div.slideUp(700, function () {
             order_div.remove();
         });
-    }, 1000);
+    }, 2500);
 
 }
 
@@ -73,7 +73,7 @@ function remove_order_by_id_error(order_id, errors) {
         order_div.slideUp(700, function () {
             order_div.remove();
         });
-    }, 1000);
+    }, 2500);
 }
 
 var orders_ids = [];
@@ -150,7 +150,7 @@ LifeTimeList.prototype = {
         order_div.append('<div class="preloader-wrapper active right"><div class="spinner-layer spinner-green-only"><div class="circle-clipper right"><div class="circle"></div></div></div></div>  ');
         window.setTimeout(function() {
             utilsModule.createAjaxRequest(self, self.opt.resolveOrderApiUrl, {id: order_id}, {}, self.resolveOrderSuccess, self.resolveOrderFail);
-        }, 1500);
+        }, 700);
 
 
     },
