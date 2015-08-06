@@ -122,6 +122,7 @@ function insert_resolve_order($order_id, $resolver_id) {
         $orders_connection = get_connect_to_orders();
         $is_order_not_resolve = check_order_dont_resolve_and_return_order($orders_connection, $order_id);
         if ($is_order_not_resolve  == false) {
+            cash_is_order_resolved($order_id);
             return error_result(ORDER_RESOLVED);
         }
 
