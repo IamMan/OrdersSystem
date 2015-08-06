@@ -58,7 +58,7 @@ function remove_order_by_id_ok(order_id, price) {
         order_div.slideUp(700, function () {
             order_div.remove();
         });
-    }, 2500);
+    }, 1000);
 
 }
 
@@ -73,7 +73,7 @@ function remove_order_by_id_error(order_id, errors) {
         order_div.slideUp(700, function () {
             order_div.remove();
         });
-    }, 2500);
+    }, 1000);
 }
 
 var orders_ids = [];
@@ -90,7 +90,7 @@ LifeTimeList.prototype = {
         if (response.result == 'ok')
         {
             //self.last_orders_span(response.info);
-            var newCount = response.info - orders_ids[orders_ids.length - 1] -1;
+            var newCount = response.info - orders_ids[orders_ids.length - 1];
             if (newCount > 100) {
                 neworders.text('100+ new orders ready for you');
             } else if (newCount > 0){
@@ -129,7 +129,7 @@ LifeTimeList.prototype = {
             });
 
             var nowTime = new Date();
-            $("#last_update").text(nowTime);
+            $("#last_update").text(nowTime.toLocaleString());
 
             if (is_first_time_load) {
                 is_first_time_load = false;

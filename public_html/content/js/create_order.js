@@ -20,6 +20,7 @@ function OrderCreator() {
     self.init();
     self.form = $(self.opt.formSelector);
     self.form.submit(function(event) {
+        $(self.opt.formSubmit).addClass("disabled");
         self.sendOrder();
         event.preventDefault();
     });
@@ -97,6 +98,7 @@ OrderCreator.prototype = {
         });
 
         request.success(function(response) {
+            $(self.opt.formSubmit).removeClass("disabled");
             if (self.validateResponse(response) == true) {
                 self.responseSuccess(self, response);
             } else {
