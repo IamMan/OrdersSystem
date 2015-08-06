@@ -130,9 +130,10 @@ LifeTimeList.prototype = {
 
             var nowTime = new Date();
             $("#last_update").text(nowTime.toLocaleString());
-
             if (is_first_time_load) {
                 is_first_time_load = false;
+            } else {
+                self.getLast();
             }
         } else {
 
